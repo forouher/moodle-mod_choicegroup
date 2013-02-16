@@ -100,14 +100,14 @@ function choicegroup_get_user_answer($choicegroup, $user) {
     $groupids = array();
     foreach ($groups as $group) {
         if (is_numeric($group->id)) {
-            $groupids[] = $group->id;
+            $groupids[] = pg_escape_string($group->id);
         }
     }
     if ($groupids) {
         $groupidsstr = implode(', ', $groupids);
-        $groupmembership = $DB->get_record_sql('SELECT * FROM {groups_members} WHERE `userid` = ? AND `groupid` IN (?)', array($userid, $groupidsstr));
+        $groupmembership = $DB->get_record_sql("SELECT * FROM {groups_members} WHERE `userid` = ? AND `groupid` IN ($groupidsstr)", array($userid));
         if ($groupmembership) {
-            $group = $DB->get_record('groups', array('id' => $option->groupid));
+            $group = $DB->get_record('groups', array('id' => $groupmembership->groupid));
             $group->timeuseradded = $groupmembership->timeadded;
             return $group;
         }
