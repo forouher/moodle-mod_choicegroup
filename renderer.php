@@ -91,7 +91,11 @@ class mod_choicegroup_renderer extends plugin_renderer_base {
             $group_members_names = array();
             foreach ($group_members as $group_member) {
                 $group_user = $DB->get_record('user', array('id' => $group_member->userid));
-                $group_members_names[] = $group_user->lastname . ', ' . $group_user->firstname;
+                $group_member_name = $group_user->lastname . ', ';
+                foreach(explode(" ",$group_user->firstname) as $subname) {
+                  $group_member_name .= strtoupper(substr($subname,0,1)) . ". ";
+                }
+                $group_members_names[] = $group_member_name;
             }
             sort($group_members_names);
             if (!empty($option->attributes->disabled) || ($limitanswers && sizeof($group_members) >= $option->maxanswers)) {
