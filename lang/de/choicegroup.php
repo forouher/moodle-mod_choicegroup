@@ -103,6 +103,6 @@ $string['noresultsviewable'] = 'Ergebnisse sind aktuell nicht sichtbar.';
 $string['neverresultsviewable'] = 'Ergebnisse sind nicht sichtbar.';
 $string['afterresultsviewable'] = 'Ergebnisse sind nach der eigenen Abstimmung sichtbar.';
 $string['notyetresultsviewable'] = 'Ergebnisse werden nach dem Ende der Abstimmung sichtbar.';
-$string['groupdoesntexist'] = 'Einige der ausgew&uuml;hlten Gruppen sind im Kurs nicht vorhanden. Der Dozent/Kursverwalter sollte diese anlegen und/oder die Abstimmung anpassen.';
+$string['groupdoesntexist'] = 'Einige der ausgew&auml;hlten Gruppen sind im Kurs nicht vorhanden. Der Dozent/Kursverwalter sollte diese anlegen und/oder die Abstimmung anpassen.';
 $string['samegroupused'] = 'Eine Gruppe kann nicht mehrmals verwendet werden.';
 
