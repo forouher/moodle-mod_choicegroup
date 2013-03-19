@@ -138,10 +138,6 @@ class mod_choicegroup_renderer extends plugin_renderer_base {
                 }
             }
 
-            if (!empty($options['allowupdate']) && ($options['allowupdate'])) {
-                $url = new moodle_url('view.php', array('id'=>$coursemoduleid, 'action'=>'delchoicegroup', 'sesskey'=>sesskey()));
-                $html .= html_writer::link($url, get_string('removemychoicegroup','choicegroup'));
-            }
         } else {
             $html .= html_writer::tag('td', get_string('havetologin', 'choicegroup'));
         }
