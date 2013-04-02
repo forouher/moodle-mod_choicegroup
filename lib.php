@@ -299,6 +299,10 @@ function choicegroup_user_submit_response($formanswer, $choicegroup, $userid, $c
     }
 
     if (!($choicegroup->limitanswers && ($countanswers >= $maxans) )) {
+        if ($current && $current->id==$selected_option->groupid) {
+            add_to_log($course->id, "choicegroup", "already member", "view.php?id=$cm->id", $choicegroup->id, $cm->id);
+            return true;
+        }
         groups_add_member($selected_option->groupid, $userid);
         if ($current) {
             groups_remove_member($current->id, $userid);
@@ -317,6 +321,7 @@ function choicegroup_user_submit_response($formanswer, $choicegroup, $userid, $c
             print_error('choicegroupfull', 'choicegroup', $CFG->wwwroot.'/mod/choicegroup/view.php?id='.$cm->id);
         }
     }
+    return true;
 }
 
 /**
